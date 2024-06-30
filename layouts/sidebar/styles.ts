@@ -11,7 +11,6 @@ export const StyledSidebar = styled(Box)(({ theme }) => ({
   left: 0,
   transition: "transform 0.3s ease",
   backgroundColor: alpha(theme.palette.primary.dark, 1),
-  boxShadow: "20px 5px 15px rgb(7 7 7 / 20%)",
 
   [theme.breakpoints.up("md")]: {
     "&.sidebar": {

@@ -14,21 +14,25 @@ import { Sidebar } from "../sidebar";
 import { navigationLinks } from "@/constants";
 
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
-  const handleSidebar = () => setSidebarOpen(!sidebarOpen)
+  const handleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (!(e.target instanceof Element)) return;
-    if (!e.target.closest("sidebar") && !e.target.closest(".content")) {
-      setSidebarOpen(false);
+    if (!e.target.closest(".sidebar") && !e.target.closest(".content")) {
+      setSidebarOpen(!sidebarOpen);
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => document.addEventListener("click", handleClickOutside);
+  });
 
   return (
     <StyledAppBar ref={containerRef}>
@@ -36,7 +40,7 @@ const Header = () => {
         <StyledBrandLink href="/" passHref>
           TicketsXP
         </StyledBrandLink>
-        <IconButton onClick={handleSidebar}  sx={{ display: { md: "none" } }}>
+        <IconButton onClick={handleSidebar} sx={{ display: { md: "none" } }}>
           <Menu sx={{ color: "white" }} />
         </IconButton>
         <StyledList>
