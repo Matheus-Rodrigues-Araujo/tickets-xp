@@ -1,7 +1,8 @@
-const Page = () => {
-    return (
-        <h1>page</h1>
-    )
-}
+import { ReactNode } from "react";
+import { Box } from "@mui/material";
 
-export default Page
+const Page = ({ children }: { children: ReactNode }) => {
+  return <Box className="content" >{children}</Box>;
+};
+
+export default Page;

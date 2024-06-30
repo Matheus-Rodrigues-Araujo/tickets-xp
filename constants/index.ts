@@ -25,23 +25,64 @@ export const navigationLinks = [
   },
 ];
 
-export const serviceList = [
+export const footerContactLinks = [
   {
-    name: "Security",
-    description: `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id elementum lectus, eget suscipit justo. Nulla molestie congue libero, sit amet maximus velit hendrerit a. Nullam tempus consequat tincidunt. Cras semper quam ex, placerat laoreet erat semper in. In hac habitasse platea dictumst. Sed rutrum, odio ut mattis rhoncus, libero diam efficitur magna, eu hendrerit est justo eu nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Quisque vel quam semper ante egestas feugiat.
-    `,
+    path: "#",
+    label: "Entre em contato com o suporte",
   },
   {
-    name: "Fitness",
-    description: `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id elementum lectus, eget suscipit justo. Nulla molestie congue libero, sit amet maximus velit hendrerit a. Nullam tempus consequat tincidunt. Cras semper quam ex, placerat laoreet erat semper in. In hac habitasse platea dictumst. Sed rutrum, odio ut mattis rhoncus, libero diam efficitur magna, eu hendrerit est justo eu nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Quisque vel quam semper ante egestas feugiat.
-    `,
+    path: "#",
+    label: "X",
   },
   {
-    name: "Technology",
-    description: `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id elementum lectus, eget suscipit justo. Nulla molestie congue libero, sit amet maximus velit hendrerit a. Nullam tempus consequat tincidunt. Cras semper quam ex, placerat laoreet erat semper in. In hac habitasse platea dictumst. Sed rutrum, odio ut mattis rhoncus, libero diam efficitur magna, eu hendrerit est justo eu nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Quisque vel quam semper ante egestas feugiat.
-    `,
+    path: "#",
+    label: "Linkedin",
+  },
+  {
+    path: "#",
+    label: "Instagram",
+  },
+  {
+    path: "#",
+    label: "Facebook",
+  },
+];
+
+export const footerLinks = [
+  {
+    path: "#",
+    label: "Sobre",
+  },
+  {
+    path: "#",
+    label: "Trabalhe conosco",
+  },
+  {
+    path: "#",
+    label: "Impacto",
+  },
+  {
+    path: "#",
+    label: "Status",
+  },
+  {
+    path: "#",
+    label: "Termos",
+  },
+  {
+    path: "#",
+    label: "Privacidade",
+  },
+  {
+    path: "#",
+    label: "Acessibilidade",
+  },
+  {
+    path: "#",
+    label: "Cookies",
+  },
+  {
+    path: "#",
+    label: "Gerenciar preferências de cookies",
   },
 ];

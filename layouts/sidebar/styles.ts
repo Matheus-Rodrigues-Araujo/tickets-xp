@@ -1,19 +1,23 @@
 "use client";
-import { AppBar, List } from "@mui/material";
+import { Box, List } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import Link from "next/link";
 
-export const StyledAppBar = styled(AppBar)(({ theme }) => ({
+export const StyledSidebar = styled(Box)(({ theme }) => ({
+  flexDirection: "column",
+  minHeight: "100vh",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  transition: "transform 0.3s ease",
   backgroundColor: alpha(theme.palette.primary.dark, 1),
-  position: "relative",
-  "& div": {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+  boxShadow: "20px 5px 15px rgb(7 7 7 / 20%)",
 
   [theme.breakpoints.up("md")]: {
-    display: "flex",
+    "&.sidebar": {
+      display: "none",
+      backgroundColor: "orange",
+    },
   },
 }));
 
@@ -27,20 +31,21 @@ export const StyledBrandLink = styled(Link)(({ theme }) => ({
   WebkitTextFillColor: "transparent",
   fontSize: "1.5em",
   fontWeight: "900",
+  paddingTop: "12px",
 }));
 
 export const StyledList = styled(List)(({ theme }) => ({
   display: "flex",
+  flexDirection: "column",
   gap: "5px",
+
   "& li": {
     width: "auto",
   },
+
   "& li a": {
     color: alpha(theme.palette.success.main, 1),
     textDecoration: "none",
     fontWeight: "300",
-  },
-  [theme.breakpoints.down("md")]: {
-    display: "none",
   },
 }));
