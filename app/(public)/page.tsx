@@ -1,25 +1,28 @@
+"use server";
 import { PageTitle } from "@/components/page-title/page-title";
-import { StyledContent } from "./styles";
+import { StyledContent, StyledImageContainer } from "./styles";
 
 import Image from "next/image";
 import { Box } from "@mui/material";
 
 const Page = () => {
   return (
-    <Box sx={{minHeight: '100vh'}} >
+    <Box sx={{ minHeight: "100vh" }}>
       <StyledContent className="content">
         <PageTitle variant="h1">
-          Desenvolvido para quem realmente vai viver a vida com emoção!
+          Desenvolvido para quem vai viver com emoção!
         </PageTitle>
-        <Image
-          src="/show.png"
-          height={550}
-          width={700}
-          style={{ width: '100%', maxWidth: "1370px", objectFit: "cover", backgroundPosition: 'center center' }}
-          alt="Festival in somewhere in the world"
-        />
+        <StyledImageContainer>
+          <Image
+            src="/show.png"
+            quality={80}
+            width={3248}
+            height={1429}
+            priority
+            alt="Festival in somewhere in the world"
+          />
+        </StyledImageContainer>
       </StyledContent>
-
     </Box>
   );
 };
