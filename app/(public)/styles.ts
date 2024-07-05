@@ -41,7 +41,7 @@ export const StyledImageContainer = styled(Box)(({ theme }) => ({
 
   "& img": {
     maxWidth: "100%",
-    borderRadius: "3em",
+    borderRadius: "10px",
   },
 
   [theme.breakpoints.up("md")]: {

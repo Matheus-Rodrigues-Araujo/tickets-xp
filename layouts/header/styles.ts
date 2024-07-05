@@ -7,12 +7,14 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: alpha(theme.palette.primary.dark, 1),
   position: "relative",
   boxShadow: 'none',
+  display: 'flex',
   
   "& div": {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
   },
+
 
   [theme.breakpoints.up("md")]: {
     display: "flex",

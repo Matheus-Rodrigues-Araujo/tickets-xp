@@ -3,20 +3,37 @@ import { Box, List } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import Link from "next/link";
 
+export const Overlay = styled(Box)(({ theme }) => ({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: alpha(theme.palette.common.black, 0.5),
+  zIndex: 1,
+}));
+
 export const StyledSidebar = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   minHeight: "100vh",
   position: "absolute",
+  width: "220px",
   top: 0,
   left: 0,
   transition: "transform 0.3s ease",
   backgroundColor: alpha(theme.palette.primary.dark, 1),
+  zIndex: 1000,
+  transform: "translateX(0)",
 
-  [theme.breakpoints.up("md")]: {
-    "&.sidebar": {
-      display: "none",
-      backgroundColor: "orange",
-    },
+  "& a": {
+    cursor: "pointer",
+  },
+
+  "&.hidden": {
+    transform: "translateX(-100%)",
+  },
+  "&:not(.hidden)": {
+    transform: "translateX(0)",
   },
 }));
 

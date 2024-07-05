@@ -1,31 +1,31 @@
 "use client";
-import {
-  AppBar,
-  IconButton,
-  List,
-  ListItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { Menu } from "@mui/icons-material";
-import { StyledAppBar, StyledBrandLink, StyledList } from "./styles";
+
+import Link from "next/link";
+import { useState, useEffect } from "react";
+
 import { Sidebar } from "../sidebar";
 
 import { navigationLinks } from "@/constants";
 
-import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+
+import { StyledAppBar, StyledBrandLink, StyledList } from "./styles";
+import Menu from "@mui/icons-material/Menu";
 
 const Header = () => {
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const containerRef = useRef(null);
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-  const handleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const handleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (!(e.target instanceof Element)) return;
-    if (!e.target.closest(".sidebar") && !e.target.closest(".content")) {
-      setSidebarOpen(!sidebarOpen);
+    if (e.target.closest(".overlay")) {
+      setSidebarOpen(false);
     }
   };
 
@@ -35,7 +35,7 @@ const Header = () => {
   });
 
   return (
-    <StyledAppBar ref={containerRef}>
+    <StyledAppBar>
       <Toolbar>
         <StyledBrandLink href="/" passHref>
           TicketsXP
@@ -52,8 +52,8 @@ const Header = () => {
             </ListItem>
           ))}
         </StyledList>
-        <Sidebar isSidebarOpen={sidebarOpen} />
       </Toolbar>
+      <Sidebar isSidebarOpen={isSidebarOpen} />
     </StyledAppBar>
   );
 };
