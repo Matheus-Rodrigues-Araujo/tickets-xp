@@ -21,18 +21,6 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   },
 }));
 
-export const StyledBrandLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  backgroundImage: `
-  linear-gradient(90deg, ${alpha(theme.palette.success.main, 1)} 0%, 
-  ${alpha(theme.palette.primary.main, 1)} 100%)
-  `,
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  fontSize: "1.5em",
-  fontWeight: "900",
-}));
-
 export const StyledList = styled(List)(({ theme }) => ({
   display: "flex",
   gap: "5px",

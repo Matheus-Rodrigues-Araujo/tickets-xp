@@ -7,15 +7,13 @@ import { Sidebar } from "../sidebar";
 
 import { navigationLinks } from "@/constants";
 
-import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 
-import { StyledAppBar, StyledBrandLink, StyledList } from "./styles";
+import { StyledAppBar, StyledList } from "./styles";
 import Menu from "@mui/icons-material/Menu";
+import { Brand } from "@/components/brand";
 
 const Header = () => {
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -37,9 +35,7 @@ const Header = () => {
   return (
     <StyledAppBar>
       <Toolbar>
-        <StyledBrandLink href="/" passHref>
-          TicketsXP
-        </StyledBrandLink>
+        <Brand/>
         <IconButton onClick={handleSidebar} sx={{ display: { md: "none" } }}>
           <Menu sx={{ color: "white" }} />
         </IconButton>

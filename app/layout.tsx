@@ -20,12 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body  style={{position: 'relative'}} className={inter.className}>
-        <AppProvider>
-          <Header />
-          {children}
-          <Footer/>
-        </AppProvider>
+      <body style={{ position: "relative" }} className={inter.className}>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );
