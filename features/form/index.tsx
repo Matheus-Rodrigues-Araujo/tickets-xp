@@ -9,12 +9,21 @@ import { userDataSchema } from "@/models/schemas/user";
 
 import { Brand } from "../../components/brand";
 
-import { Box, Button, Stack, TextField, Toolbar, Typography } from "@mui/material";
-import { StyledAppBar, StyledForm, StyledFooter } from "./styles";
+import {
+  Box,
+  Button,
+  Stack,
+  TextField,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+
+import { StyledAppBar, StyledStack, StyledForm, StyledFooter } from "./styles";
+import { ButtonSubmit } from "@/components/button-submit";
 
 const AuthForm = ({ type }: { type: string }) => {
   const formSchema = userDataSchema(type);
-  //@ts-ignore
+  // @ts-ignore
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -29,7 +38,7 @@ const AuthForm = ({ type }: { type: string }) => {
       alignItems="center"
       sx={{ minHeight: "100vh", color: "white" }}
     >
-      <Stack direction="column" spacing={2} className="p-5 md:p-2">
+      <StyledStack direction="column" spacing={2}>
         <StyledAppBar>
           <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
             <Brand />
@@ -38,76 +47,73 @@ const AuthForm = ({ type }: { type: string }) => {
         <StyledForm onSubmit={onSubmit}>
           {type === "register" && (
             <>
-              <Stack
-                spacing={2}
-                direction={{ xm: "column", md: "row" }}
-                justifyContent="space-between"
-              >
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Stack>
                   <TextField
+                    variant="outlined"
                     type="text"
                     {...register("firstName")}
                     placeholder="ex: John"
                   />
-                  <Typography className="text-md text-red-500">
+                  <Typography sx={{ color: "red" }}>
                     {(errors.firstName?.message as string) || ""}
                   </Typography>
                 </Stack>
 
                 <Stack className="flex justify-between flex-col">
                   <TextField
+                    variant="outlined"
                     type="text"
                     {...register("lastName")}
                     placeholder="ex: Doe"
                   />
-                  <Typography className="text-md text-red-500">
+                  <Typography sx={{ color: "red" }}>
                     {(errors.lastName?.message as string) || ""}
                   </Typography>
                 </Stack>
               </Stack>
               <Stack direction="column">
                 <TextField
+                  variant="outlined"
                   {...register("address")}
                   placeholder="Enter your address"
-                  
                 />
-                <Typography className="text-md text-red-500">
+                <Typography sx={{ color: "red" }}>
                   {(errors.address?.message as string) || ""}
                 </Typography>
               </Stack>
               <Stack direction="column">
                 <TextField
+                  variant="outlined"
                   type="text"
                   {...register("city")}
                   placeholder="ex: São Paulo"
                 />
-                <Typography className="text-md text-red-500">
+                <Typography sx={{ color: "red" }}>
                   {(errors.city?.message as string) || ""}
                 </Typography>
               </Stack>
-              <Stack
-                justifyContent="space-between"
-                direction={{ xs: "column", md: "row" }}
-                spacing={2}
-              >
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Stack direction="column">
                   <TextField
+                    variant="outlined"
                     type="text"
                     {...register("state")}
                     placeholder="ex: SP"
                   />
-                  <Typography className="text-md text-red-500">
+                  <Typography sx={{ color: "red" }}>
                     {(errors.state?.message as string) || ""}
                   </Typography>
                 </Stack>
 
                 <Stack direction="column">
                   <TextField
+                    variant="outlined"
                     type="text"
                     {...register("postalCode")}
                     placeholder="ex: 1234"
                   />
-                  <Typography className="text-md text-red-500">
+                  <Typography sx={{ color: "red" }}>
                     {(errors.postalCode?.message as string) || ""}
                   </Typography>
                 </Stack>
@@ -116,61 +122,55 @@ const AuthForm = ({ type }: { type: string }) => {
           )}
           <Stack direction="column">
             <TextField
+              variant="outlined"
               type="email"
               {...register("email")}
               placeholder="ex: johndoe@email.com"
             />
-            <Typography className="text-md text-red-500">
+            <Typography sx={{ color: "red" }}>
               {(errors.email?.message as string) || ""}
             </Typography>
           </Stack>
           <Stack direction="column">
             <TextField
+              variant="outlined"
               type="password"
               {...register("password")}
               placeholder="Enter your password"
             />
-            <Typography className="text-md text-red-500">
+            <Typography sx={{ color: "red" }}>
               {(errors.password?.message as string) || ""}
             </Typography>
           </Stack>
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="rounded-md font-bold p-2 bg-blue-600 hover:bg-blue-500"
-          >
+          <ButtonSubmit isPending={false} loading={isLoading}>
             {isLoading
               ? "Loading..."
               : type === "login"
               ? "Sign In"
               : "Sign Up"}
-          </Button>
+          </ButtonSubmit>
         </StyledForm>
         <Stack direction="row" spacing={1} alignItems="center">
-          <Box sx={{height: "0.5px", width: '100%', backgroundColor: 'white'}} ></Box>
-          <span>or</span>
-          <Box sx={{height: "0.5px", width: '100%', backgroundColor: 'white'}}></Box>
+          <Box
+            sx={{ height: "0.5px", width: "100%", backgroundColor: "white" }}
+          ></Box>
+          <Typography variant="body1" >or</Typography>
+          <Box
+            sx={{ height: "0.5px", width: "100%", backgroundColor: "white" }}
+          ></Box>
         </Stack>
         <StyledFooter>
-          {type === "login" ? (
-            <Typography className="text-md">
-              Don't have an account?
-              <Link href="register" className="text-blue-400" passHref>
-                {" "}
-                Register
-              </Link>
-            </Typography>
-          ) : (
-            <Typography className="text-md">
-              Already have an account?
-              <Link href="login" className="text-blue-400" passHref>
-                {" "}
-                Login
-              </Link>
-            </Typography>
-          )}
+          <Typography className="text-md">
+            {type === "login"
+              ? "Don't have an account?"
+              : "Already have an account?"}
+            <Link href={type === "login" ? "register" : "login"} passHref>
+              {" "}
+              {type === "login" ? "Register" : "Login"}
+            </Link>
+          </Typography>
         </StyledFooter>
-      </Stack>
+      </StyledStack>
     </Stack>
   );
 };

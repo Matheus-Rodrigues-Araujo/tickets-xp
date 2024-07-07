@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-const theme = createTheme({
+const baseTheme = createTheme({
   palette: {
     primary: {
       main: "#299DCF",
@@ -11,7 +11,7 @@ const theme = createTheme({
     },
     success: {
       main: "#B0D741",
-      light: '#B0D741'
+      light: "#B0D741",
     },
   },
   typography: {
@@ -26,6 +26,39 @@ const theme = createTheme({
     h3: {
       fontSize: "1.5rem",
       fontWeight: 600,
+    },
+  },
+});
+
+const theme = createTheme(baseTheme, {
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiInputBase-root": {
+            backgroundColor: "white",
+            height: "3.125rem",
+            borderRadius: "5px",
+          },
+        },
+      },
+    },
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: "submit" },
+          style: {
+            height: "3.125rem",
+            fontSize: "1rem",
+            fontWeight: "700",
+            borderRadius: "5px",
+            backgroundImage: `linear-gradient(90deg, ${baseTheme.palette.success.main} 0%, ${baseTheme.palette.primary.main} 100%)`,
+            "&:hover": {
+              background: baseTheme.palette.primary.main,
+            },
+          },
+        },
+      ],
     },
   },
 });
